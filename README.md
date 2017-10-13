@@ -5,11 +5,11 @@ Cookiecutter template for creating a RAML 1.0 project.
 
 Requirements
 ------------
-Install `cookiecutter` command line: `pip install cookiecutter`    
+Install `cookiecutter` command line: `pip install cookiecutter`
 
 Usage
 -----
-Generate a new Cookiecutter template layout: `cookiecutter gh:genzj/cookiecutter-raml`    
+Generate a new RAML 1.0 API document project: `cookiecutter gh:genzj/cookiecutter-raml`    
 
 License
 -------
