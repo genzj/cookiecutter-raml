@@ -1,0 +1,30 @@
+{
+  "name": "{{ cookiecutter.project_slug }}",
+  "version": "{{ cookiecutter.version }}",
+  "description": "{{ cookiecutter.project_short_description }}",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "npm-parallel": "^2.0.1",
+    "npm-watch": "^0.3.0",
+    "raml2html": "^6.4.1",
+    "watch-http-server": "https://github.com/genzj/watch-http-server.git#genzj-patch-etag-bug"
+  },
+  "watch": {
+    "html": {
+      "patterns": [
+        "."
+      ],
+      "extensions": "raml"
+    }
+  },
+  "scripts": {
+    "test": "raml2html {{ cookiecutter.project_slug }}.raml",
+    "watch:raml2html": "npm-watch",
+    "watch:http": "watch-http-server ./output -a 127.0.0.1",
+    "watch": "parallel watch:raml2html watch:http",
+    "html": "raml2html {{ cookiecutter.project_slug }}.raml >output/output.html"
+  },
+  "author": "{{ cookiecutter.full_name }}",
+  "license": "SEE LICENSE IN LICENSE"
+}

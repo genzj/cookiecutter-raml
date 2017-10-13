@@ -1,0 +1,33 @@
+description: |
+  token related interfaces.
+
+  to secure system from brute crack, rate limit must be implemented
+  per client IP and user ID.
+
+type:
+  collection:
+
+get:
+  description:
+    list all user tokens if accessed with admin privilege. or return valid
+    tokens of current user.
+
+post:
+  securedBy: []
+  responses:
+    401:
+      description: incorrect username or password
+
+delete:
+  description:
+    invalidate token in current request
+
+  responses:
+    400:
+      description:
+        invalid, revoked or obsolete token
+
+    200:
+      description:
+        token has been invalidated successfully
+

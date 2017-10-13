@@ -1,0 +1,91 @@
+Song:
+  type: object
+Artist:
+  type: object
+Album:
+  type: object
+
+TerminalStatus:
+  description: state of terminals
+  type: string
+  enum:
+    - ACTIVATED
+    - PAUSED
+
+Role:
+  type: string
+  enum:
+    - ADMIN
+    - ADAPTER
+    - USER
+
+EUI64:
+  type: string
+  pattern: "[0-9a-fA-F]{16}"
+
+Timestamp:
+  description: |
+    UTC Unix timestamp
+  type: integer
+  format: int32
+  minimum: 0
+  maximum: 4294967295
+
+UserCreateRequest:
+  type: object
+  properties:
+    userId:
+      description: login username
+      type: string
+      pattern: "[a-zA-Z][a-zA-Z0-9_-]*"
+    displayName:
+      type: string
+    email:
+      type: string
+    mobile:
+      type: string
+      pattern: "[0-9]+"
+
+User:
+  type: UserCreateRequest
+  properties:
+    role:
+      type: Role
+
+UserPatchRequest:
+  type: object
+  properties:
+    displayName?:
+      description: display name, can be updated by owner or admin
+      type: string
+    email?:
+      description: email address, can be updated by owner or admin
+      type: string
+    mobile?:
+      description: cellphone number, can be updated by owner or admin
+      type: string
+      pattern: "[0-9]+"
+    role?:
+      description: authority level, can only be updated by admin
+      type: Role
+
+Token:
+  type: object
+  properties:
+    userInfo:
+      type: User
+    expiresAt:
+      type: Timestamp
+    issuedAt:
+      type: Timestamp
+    token:
+      type: string
+
+TokenCreateRequest:
+  type: object
+  properties:
+    userId:
+      type: string
+    password:
+      type: string
+

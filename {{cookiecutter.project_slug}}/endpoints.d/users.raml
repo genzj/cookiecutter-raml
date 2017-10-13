@@ -1,0 +1,26 @@
+description: |
+  user management related APIs
+
+type:
+  collection:
+
+get:
+  is:
+    - searchable:
+        key: "mobile"
+        example: "13800138000"
+    - searchable:
+        key: "email"
+        example: "user@email.com"
+    - searchable:
+        key: "role"
+        example: "ADAPTER"
+
+/{userId}:
+  type:
+    collectionItem:
+
+  patch:
+    responses:
+      403:
+        description: attempt to change fields exclusively writable to admins

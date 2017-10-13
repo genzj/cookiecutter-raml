@@ -1,0 +1,15 @@
+queryParameters:
+  <<key>>:
+    description: |
+      filter records by <<key>> field
+    example: |
+      <<key>>=<<example>>
+
+responses:
+  404:
+    description: |
+      no record can be found with specified filtering condition.
+
+      **Note** when the condition is omitted but the record table is empty, a
+      empty list with status code 200 shall be returned to eliminate confusion.
+

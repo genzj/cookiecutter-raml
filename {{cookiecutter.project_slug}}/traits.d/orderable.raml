@@ -1,0 +1,12 @@
+queryParameters:
+  orderBy:
+    description: |
+      specify fields used for sorting. use primary key for sorting if omitted.
+      could be one of <<fieldsList>>
+    type: string
+    required: false
+  order:
+    description: sorting order, either desc (default) or asc
+    enum: [desc, asc]
+    default: desc
+    required: false

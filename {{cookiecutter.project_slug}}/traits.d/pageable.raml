@@ -1,0 +1,30 @@
+queryParameters:
+  offset:
+    description: skip specified number of records
+    type: integer
+    required: false
+    example: 20
+    default: 0
+  limit:
+    description: limit number of return records
+    type: integer
+    required: false
+    example: 80
+    default: 20
+responses:
+  200:
+    body:
+      application/json:
+        properties:
+          offset:
+            description: number of records skipped
+            type: integer
+          limit:
+            description: maximum number of records in response
+            type: integer
+          total:
+            description: total number of records of the query, can be used for pagination
+            type: integer
+          more:
+            description: true if more records waiting for further reading, false otherwise
+            type: boolean

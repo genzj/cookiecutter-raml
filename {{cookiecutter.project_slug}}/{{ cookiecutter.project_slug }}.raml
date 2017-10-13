@@ -1,0 +1,22 @@
+#%RAML 1.0
+---
+title: {{ cookiecutter.project_name }}
+baseUri: "https://api.base-hostname.com/{version}/"
+version: v1
+mediaType: application/json
+protocols: https
+
+securitySchemes: !include security.raml
+
+securedBy: token_security
+
+types: !include types.raml
+
+resourceTypes: !include resource-types.raml
+
+traits: !include traits.raml
+
+/users: !include endpoints.d/users.raml
+
+/tokens: !include endpoints.d/tokens.raml
+

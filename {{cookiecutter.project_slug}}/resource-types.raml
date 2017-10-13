@@ -1,0 +1,76 @@
+readOnlyCollection:
+  description: retrieve list of <<resourcePathName>>
+  get:
+    description: retrieve list of <<resourcePathName>>
+    responses:
+      200:
+        body:
+          application/json:
+            properties:
+              data:
+                type: <<resourcePathName|!singularize|!uppercamelcase>>[]
+            #example: |
+              #<<exampleCollection>>
+
+collectionWithType:
+  description: retrieve or update <<resourcePathName>>
+  get:
+    description: retrieve list of <<resourcePathName>>
+    is:
+      - pageable
+
+    responses:
+      200:
+        body:
+          application/json:
+            properties:
+              data:
+                type: <<datumType>>[]
+            #example: |
+              #<<exampleCollection>>
+  post:
+    description: |
+      create a new <<datumType>> object
+    body:
+      type: <<datumCreateType>>
+      #example: |
+        #<<exampleItem>>
+    responses:
+      200:
+        body:
+          type: <<datumType>>
+
+collectionItemWithType:
+  description: <<datumType>> object interfaces
+  get:
+    description: |
+      retrieve a <<datumType>> object by primary key {<<datumType>>Id}
+    responses:
+      200:
+        body:
+          type: <<datumType>>
+          #example: |
+            #<<exampleItem>>
+      404:
+        description: specified key not exists
+  patch?:
+      description: |
+        update <<datumType>> object. only update fields specified in request body, others remain the same.
+      body:
+        type: <<datumPatchType>>
+      responses:
+        200:
+          body:
+            type: <<datumType>>
+
+collection:
+  type:
+    collectionWithType:
+      datumType: <<resourcePathName|!singularize|!uppercamelcase>>
+      datumCreateType: <<resourcePathName|!singularize|!uppercamelcase>>CreateRequest
+
+collectionItem:
+  type:
+    collectionItemWithType:
+      datumType: <<resourcePathName|!singularize|!uppercamelcase>>
+      datumPatchType: <<resourcePathName|!singularize|!uppercamelcase>>PatchRequest

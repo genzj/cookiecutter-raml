@@ -1,0 +1,21 @@
+token_security:
+  type: x-token-security
+  description: |
+    Identify caller by the `Token` in `X-API-TOKEN` in the HTTP request header.
+    Refer to `/token/` APIs.
+
+    **NOTE** to secure token from sniffers, HTTPS is required. In a strict environment,
+    tokens once appear in HTTP will be invalidated, even its legal user must refresh
+    authentication to get a new token.
+
+  describedBy:
+    headers:
+      X-API-TOKEN:
+        type: string
+    responses:
+      401:
+        description: |
+          invalid, revoked or obsolete token
+      403:
+        description: |
+          token is valid, but not has privilege to access the specified API endpoint
