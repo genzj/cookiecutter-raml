@@ -1,7 +1,7 @@
 cookiecutter-raml
 =================
 
-Cookiecutter template for creating a RAML 1.0 project.
+[Cookiecutter](https://github.com/audreyr/cookiecutter) template for creating a RAML 1.0 project.
 
 Requirements
 ------------
